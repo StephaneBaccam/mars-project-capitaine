@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Dashboard</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+        <link rel="stylesheet" href="capitaine.css">
+    </head>
+    <body>
+        <header>
+            <div>
+                <h1>Spaceship panel control</h1>
+            </div>
+        </header>
+        <hr>
+        <div class="container">
+            <img class="float-left avatar" id="spaceship-crew-avatar">
+            <div class="info-important border rounded mt-2">
+                <p>Life : 
+                    <span id="spaceship-life"></span> /100
+                </p>
+            </div>
+            <div class="d-flex justify-content-around mt-2">
+                <div class="info-1 border rounded p-2 mr-2">
+                    <h2>Spaceship Status</h2>
+                    <p>In Safe Zone : <span id="spaceship-in-safe-zone"></span></p>
+                    <p>Broken : <span id="spaceship-broken"></span></p>
+                    <p>Cargo : <span id="spaceship-cargo"></span></p>
+                </div> 
+    
+                <div class="info-1  border rounded p-2">
+                    <h2>Spaceship Energy Information</h2>
+                    <p>System : <span id="spaceship-system-power"></span></p>
+                    <p>Shield : <span id="spaceship-shield-power"></span></p>
+                    <p>Thruster Power : <span id="spaceship-thruster-power"></span></p>
+                </div> 
+            </div>
+            <div class="d-flex justify-content-around mt-2">
+                <div class="info-1 border rounded p-2 mr-2">
+                    <h2>Spaceship Information</h2>
+                    <p>Angle : <span id="spaceship-angle"></span></p>
+                    <p>T.Angle : <span id="spaceship-turnto"></span></p>
+                    <p>x pos : <span id="spaceship-x"></span></p>
+                    <p>y pos : <span id="spaceship-y"></span></p>
+                </div> 
+    
+                <div class="info-1 border rounded p-2">
+                    <h2>Turret Information</h2>
+                    <p>Angle : <span id="spaceship-turret-angle"></span></p>
+                    <p>T.Angle : <span id="spaceship-turret-turnto"></span></p>
+                    <p>Reloading : <span id="spaceship-turret-reloading"></span></p>
+                    <p>Reloaded : <span id="spaceship-turret-reloaded"></span></p>
+                </div> 
+            </div>
+            <div id="commandes">
+                <div class="d-flex justify-content-around mt-2">
+                    <div class="info-1 border rounded p-2 mr-2">
+                        <h3>Spaceship actions</h3>
+                        <section class="spaceship-actions">
+                            <button id="spaceship-turnto-0" class="button-warning">Turn to 0°</button>
+                            <button id="spaceship-turnto-180" class="button-warning">Turn to 180°</button>
+                        </section>
+                    </div>
+    
+                    <div class="info-1 border rounded p-2">
+                        <h3>Spaceship Engineering</h3>
+                        <p class="red">
+                            System (health)
+                            <span class="float-right">
+                                <span id="spaceship-system-power" class="badge"></span>
+                                <button id="spaceship-system-power-down" class="button-small"> << </button>
+                                <button id="spaceship-system-power-0" class="button-small button-warning">0%</button>
+                                <button id="spaceship-system-power-100" class="button-small button-warning">100%</button>
+                                <button id="spaceship-system-power-up" class="button-small"> >> </button>
+                            </span>
+                        </p>
+    
+                        <p class="orange">
+                            Shield
+                            <span class="float-right">
+                                <span id="spaceship-shield-power" class="badge"></span>
+                                <button id="spaceship-shield-power-down" class="button-small"> << </button>
+                                <button id="spaceship-shield-power-0" class="button-small button-warning">0%</button>
+                                <button id="spaceship-shield-power-100" class="button-small button-warning">100%</button>
+                                <button id="spaceship-shield-power-up" class="button-small"> >> </button>
+                            </span>
+                        </p>
+    
+                        <p class="green">
+                            Thruster power
+                            <span class="float-right">
+                                <span id="spaceship-thruster-power" class="badge"></span>
+                                <button id="spaceship-thruster-power-down" class="button-small"> << </button>
+                                <button id="spaceship-thruster-power-0" class="button-small button-warning">0%</button>
+                                <button id="spaceship-thruster-power-100" class="button-small button-warning">100%</button>
+                                <button id="spaceship-thruster-power-up" class="button-small"> >> </button>
+                            </span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="connexion border rounded mt-2">
+                <h2>Connection</h2>
+                <div id="form-connect">
+                    <div class="form-group">
+                        <label>
+                            Team : 
+                        </label>
+                            <select id="team">
+                                <option value="1">Team 1</option>
+                                <option value="2">Team 2</option>
+                                <option value="3">Team 3</option>
+                                <option value="4">Team 4</option>
+                            </select>
+                    </div>
+                    <div class="form-group">
+                        <label>
+                            Job : 
+                        </label>
+                            <select id=job>
+                                <option value="Captain">Captain</option>
+                            </select>
+                        
+                    </div>
+                    <div class="form-group">
+                        <label>
+                            Nom d'utilisateur : 
+                            <input type="text" id="username"/>
+                        </label>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="avatar">Avatar</label>
+                        <input id="avatar" type="file" accept="image/*" required="required">
+                    </div>
+                        <button type="submit" onclick="Connexion()">Connexion</button>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
+
+<script>
+    function Connexion() {
+    var team = document.getElementById("team");
+    console.log(team.value);
+
+    var job = document.getElementById("job");
+    console.log(job.value);
+
+    var username = document.getElementById("username");
+    console.log(username.value);
+
+    //const reader = new FileReader();
+    
+    const ws = new WebSocket(`ws://beelab.tk:9090?team=${team.value}&username=${username.value}&job=${job.value}`);    
+    ws.onopen = function () {
+        console.log('socket open with server !');
+    };
+
+    /*reader.onload = (event) => {
+        ws.sendToServer('user:avatar', { avatar: event.target.result });
+        document.getElementById('spaceship-crew-avatar').src = event.target.result;
+    };*/
+
+    ws.sendToServer = function(name, data) {
+        const message = JSON.stringify({ name, data });
+
+        this.send(message);
+    };
+
+    ws.onmessage = (message) => {
+        // console.log(message.data)
+        const { name, data, error } = JSON.parse(message.data);
+        if (error) {
+            return console.log(error);
+        }
+        console.log(data.life);
+        document.getElementById('spaceship-life').innerHTML = `${data.life}`;
+        document.getElementById('spaceship-x').innerHTML = `${Math.round(data.x)}`;
+        document.getElementById('spaceship-y').innerHTML = `${Math.round(data.y)}`;
+        document.getElementById('spaceship-angle').innerHTML = `${data.angle}°`;
+        document.getElementById('spaceship-turnto').innerHTML = `${data.turnTo}°`;
+        document.getElementById('spaceship-system-power').innerHTML = `${Math.round(data.systemPower * 100)}%`;
+        document.getElementById('spaceship-shield-power').innerHTML = `${Math.round(data.shieldPower * 100)}%`;
+        document.getElementById('spaceship-thruster-power').innerHTML = `${Math.round(data.thrusterPower * 100)}%`;
+        document.getElementById('spaceship-in-safe-zone').innerHTML = `${data.inSafeZone ? 'Yes' : 'No'}`;
+        document.getElementById('spaceship-broken').innerHTML = `${data.broken ? 'Yes' : 'No'}`;
+        document.getElementById('spaceship-turret-reloaded').innerHTML = `${data.reloaded ? 'Yes' : 'No'}`;
+        document.getElementById('spaceship-cargo').innerHTML = `${data.cargo ? 'Yes' : 'No'}`;
+        document.getElementById('spaceship-turret-reloading').innerHTML = `${data.reloading ? 'Yes' : 'False' }`;
+        document.getElementById('spaceship-turret-reloaded').innerHTML = `${data.reloaded ? 'Yes' : 'False' }`;
+        document.getElementById('spaceship-turret-angle').innerHTML = `${data.turretAngle}°`;
+        document.getElementById('spaceship-turret-turnto').innerHTML = `${data.turretTurnTo}°`;
+        window.addEventListener('keydown', event => {
+            (event.isComposing || event.keyCode === 38) ? ws.sendToServer('spaceship:move', { time: 1000 }) : null
+        })
+        window.addEventListener('keydown', event => {
+            (event.isComposing || event.keyCode === 37) ? ws.sendToServer('spaceship:rotate', { angle: 45, direction: -1 }) : null
+        })
+        window.addEventListener('keydown', event => {
+            (event.isComposing || event.keyCode === 39) ? ws.sendToServer('spaceship:rotate', { angle: 45, direction: 1 }) : null
+        })
+        // document.getElementById('spaceship-rotate-left').addEventListener('click', () => ws.sendToServer('spaceship:rotate', { angle: 10, direction: -1 }));
+        // document.getElementById('spaceship-rotate-right').addEventListener('click', () => ws.sendToServer('spaceship:rotate', { angle: 10, direction: 1 }));
+        document.getElementById('spaceship-turnto-0').addEventListener('click', () => ws.sendToServer('spaceship:turnto', { angle: 0 }));
+        document.getElementById('spaceship-turnto-180').addEventListener('click', () => ws.sendToServer('spaceship:turnto', { angle: 180 }));
+        document.getElementById('spaceship-system-power-up')
+            .addEventListener('click', () => ws.sendToServer('spaceship:system:power', { power: (data.systemPower + 0.1) % 1 }));
+        document.getElementById('spaceship-system-power-0')
+            .addEventListener('click', () => ws.sendToServer('spaceship:system:power', { power: 0 }));
+        document.getElementById('spaceship-system-power-100')
+            .addEventListener('click', () => ws.sendToServer('spaceship:system:power', { power: 1 }));
+        document.getElementById('spaceship-system-power-down')
+            .addEventListener('click', () => ws.sendToServer('spaceship:system:power', { power: data.systemPower - 0.1 <= 0 ? 0 : (data.systemPower - 0.1) % 1 }));
+
+        document.getElementById('spaceship-shield-power-up')
+            .addEventListener('click', () => ws.sendToServer('spaceship:shield:power', { power: (data.shieldPower + 0.1) % 1 }));
+        document.getElementById('spaceship-shield-power-0')
+            .addEventListener('click', () => ws.sendToServer('spaceship:shield:power', { power: 0 }));
+        document.getElementById('spaceship-shield-power-100')
+            .addEventListener('click', () => ws.sendToServer('spaceship:shield:power', { power: 1 }));
+        document.getElementById('spaceship-shield-power-down')
+            .addEventListener('click', () => ws.sendToServer('spaceship:shield:power', { power: data.shieldPower - 0.1 <= 0 ? 0 : (data.shieldPower - 0.1) % 1 }));
+
+        document.getElementById('spaceship-thruster-power-up')
+            .addEventListener('click', () => ws.sendToServer('spaceship:thruster:power', { power: (data.thrusterPower + 0.1) % 1 }));
+        document.getElementById('spaceship-thruster-power-0')
+            .addEventListener('click', () => ws.sendToServer('spaceship:thruster:power', { power: 0 }));
+        document.getElementById('spaceship-thruster-power-100')
+            .addEventListener('click', () => ws.sendToServer('spaceship:thruster:power', { power: 1 }));
+        document.getElementById('spaceship-thruster-power-down')
+            .addEventListener('click', () => ws.sendToServer('spaceship:thruster:power', { power: data.thrusterPower - 0.1 <= 0 ? 0 : (data.thrusterPower - 0.1) % 1 }));
+    }
+    }
+</script>
